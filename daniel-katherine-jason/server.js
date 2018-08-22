@@ -3,6 +3,8 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
+
 
 // REVIEW: POST route needs to parse the body passed in with the request.
 // POST middleware
@@ -16,7 +18,11 @@ app.post('/articles', (request, response) => {
   response.status(201).json(request.body);
 });
 
-app.use(function (req, res, next) {
+app.get('/new', (request, response) => {
+  response.sendFile(path.join(__dirname + '/public/new.html'));
+});
+
+app.use(function (req, res) {
   res.status(404).send('Not Found');
 });
 
