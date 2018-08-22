@@ -22,8 +22,8 @@ app.get('/new', (request, response) => {
   response.sendFile(path.join(__dirname + '/public/new.html'));
 });
 
-app.use(function (req, res) {
-  res.status(404).send('Not Found');
+app.use(function (request, response) {
+  response.status(404).send('Not Found');
 });
 
 app.listen(PORT, function() {
